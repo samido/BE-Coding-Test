@@ -6,6 +6,7 @@ import za.co.spandigital.be.coding.utils.Constants;
  * @version 0.0-SNAPSHOT
  * @since JDK1.8
  */
+@FunctionalInterface
 public interface PointsCalculator {
     default int drawPoint(int currentPoints) {
         return currentPoints + Constants.ONE;
