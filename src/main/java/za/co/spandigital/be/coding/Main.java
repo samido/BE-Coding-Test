@@ -9,6 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
+
 /**
  * @author Sam Rabophala - sam.rabophala@gmail.com
  * @version 0.0-SNAPSHOT
@@ -16,6 +18,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Main {
     public static void main(String[] args) {
+
+        final Logger logger = Logger.getLogger(String.valueOf(Main.class));
+
+        logger.info("The file name is : " + args[Constants.ZERO]);
         Utilities util = new Utilities();
         String input  = args[Constants.ZERO];
         List<Match> buildMatches = util.buildMatches(input);
