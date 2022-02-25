@@ -1,7 +1,16 @@
 # BE Coding Test
 
-clone https://github.com/samido/BE-Coding-Test.git
+Step 1: clone https://github.com/samido/BE-Coding-Test.git
 
+Step 2: cd BE-Coding-Test
+
+Step 3: mvn clean install
+
+Step 4: cd target
+
+Step 5: java -cp be-coding-test-1.0.0-SNAPSHOT.jar za.co.spandigital.be.coding.Main /path/to/input.txt
+
+Step 6: OBSERVE RESULTS AND REVIEW MY CODING STANDARD
 ### Problem Statement & Instructions
 Read the problem statement, code a working solution (valid input and output will be provided)
 and supporting tests using a language of your choice. Be prepared to explain your solution
@@ -41,17 +50,15 @@ please keep this in mind. Please use platform-agnostic constructs where possible
 and file-path-separators are two problematic areas).
 
 #Sample input:
+
 Lions 3, Snakes 3
-
 Tarantulas 1, FC Awesome 0
-
 Lions 1, FC Awesome 1
-
 Tarantulas 3, Snakes 1
-
 Lions 4, Grouches 0
 
 # Expected output:
+
 1. Tarantulas, 6 pts
 2. Lions, 5 pts
 3. FC Awesome, 1 pts
