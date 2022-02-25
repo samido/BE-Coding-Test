@@ -4,6 +4,13 @@ import za.co.spandigital.be.coding.model.Match;
 import za.co.spandigital.be.coding.utils.Constants;
 import za.co.spandigital.be.coding.utils.Utilities;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -21,7 +28,12 @@ public class Main {
 
         final Logger logger = Logger.getLogger(String.valueOf(Main.class));
 
-        logger.info("The file name is : " + args[Constants.ZERO]);
+        if(args.length == 0){
+            System.out.println("Enter input file");
+            return;
+        }
+
+        logger.info("Input file is : " + args[Constants.ZERO]);
         Utilities util = new Utilities();
         String input  = args[Constants.ZERO];
         List<Match> buildMatches = util.buildMatches(input);
@@ -36,8 +48,31 @@ public class Main {
         SortedTeams.entrySet().stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> SortedPoints.put(x.getKey(), x.getValue()));
+        String outputFile = args[Constants.ZERO].substring(0,args[Constants.ZERO].lastIndexOf("\\"))+Constants.OUT_PUT_FILE;
+        Path path = Paths.get(outputFile);
+
+        if(!Files.exists(path)){
+        try {
+            Files.createFile(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        }
+        try {
+            Files.write(path, new byte[0], StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         SortedPoints.forEach((x,y)-> {
-            System.out.println(i.getAndIncrement() + Constants.DOT_WITH_SINGLE_SPACE+x+Constants.COMMA_WITH_SINGLE_SPACE+y+Constants.POINTS_ABBREVIATION);
+            String line = i.getAndIncrement() + Constants.DOT_WITH_SINGLE_SPACE+x+Constants.COMMA_WITH_SINGLE_SPACE+y+Constants.POINTS_ABBREVIATION;
+            System.out.println(line);
+            try (BufferedWriter writer = new BufferedWriter( new FileWriter(String.valueOf(path), true))) {
+                writer.write(line);
+                writer.newLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
+        logger.info("Output file is : " + outputFile);
     }
 }
