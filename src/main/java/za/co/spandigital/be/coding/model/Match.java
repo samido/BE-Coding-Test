@@ -32,8 +32,8 @@ public class Match {
    @Override
    public String toString() {
       return "Match{" +
-              "teamA=" + teamA +
-              ", teamB=" + teamB +
+              "teamA=" + teamA.toString() +
+              ", teamB=" + teamB.toString() +
               '}';
    }
 }
