@@ -49,7 +49,7 @@ This will be run in a unix-ish environment (OS X). If you choose to use a compil
 please keep this in mind. Please use platform-agnostic constructs where possible (line-endings
 and file-path-separators are two problematic areas).
 
-#Sample input:
+# Sample input:
 
 Lions 3, Snakes 3
 

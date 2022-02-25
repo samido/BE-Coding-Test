@@ -12,4 +12,5 @@ public class Constants {
     public static final int ONE = 1;
     public static final int THREE = 3;
     public static final String POINTS_ABBREVIATION = " pts";
+    public static final String OUT_PUT_FILE = "\\output.txt";
 }
